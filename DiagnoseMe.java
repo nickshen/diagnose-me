@@ -12,6 +12,11 @@ import java.io.PrintWriter;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.StringTokenizer; 
+import java.io.Reader;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.FileInputStream;
+
 
 
 class DiagnoseMe {
@@ -40,7 +45,8 @@ class DiagnoseMe {
 	}
 
 	void setup() {
-		Scanner uRead = OpenFile.openToRead("useless.txt");
+		InputStream is = getClass().getResourceAsStream("ignore.txt");
+		Scanner uRead = new Scanner(is);
 		while(uRead.hasNext()) {
 			String line = uRead.next();
 			preps.add(line);
@@ -71,7 +77,8 @@ class DiagnoseMe {
 	      }
 	    } catch (InterruptedException e) {}
 
-		read = OpenFile.openToRead("input.txt");
+	    InputStream is = getClass().getResourceAsStream("input.txt");
+		read = new Scanner(is);
 
 		String prevName = "";
 		ArrayList<String> prevSymp = new ArrayList<String>();
@@ -179,7 +186,7 @@ class DiagnoseMe {
 
 				if(temp.size() == 0) {
 					cutList(input, true); //less anal
-					type = " (VAGUE SEARCH - try more manageable query)";
+					type = " (VAGUE SEARCH - try more conventional query)";
 				}
 
 				if(temp.size() > 0) {
