@@ -1,0 +1,2 @@
+# diagnoseme
+"diagnose" an illness
